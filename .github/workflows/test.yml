@@ -10,3 +10,9 @@ jobs:
             - uses: marshall-ku/workflows/setup_pnpm@master
             - name: Run script
               run: pnpm start
+    send:
+        runs-on: ubuntu-latest
+            - uses: marshall-ku/workflows/send.yml@master
+              secrets:
+                url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+            
