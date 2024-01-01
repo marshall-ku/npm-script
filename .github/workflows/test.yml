@@ -11,8 +11,9 @@ jobs:
             - name: Run script
               run: pnpm start
     send:
-        runs-on: ubuntu-latest
-            - uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
-              secrets:
-                url: ${{ secrets.DISCORD_WEBHOOK_URI }}
-            
+        uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
+        with:
+            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
+            message: "CI job failed - pull request"
+        secrets:
+            url: ${{ secrets.DISCORD_WEBHOOK_URI }}
