@@ -15,5 +15,7 @@ jobs:
         with:
             succeed: true
             message: "Testing"
+            title: "Hello there"
+            color: "3108265"
         secrets:
             url: ${{ secrets.DISCORD_WEBHOOK_URI }}
