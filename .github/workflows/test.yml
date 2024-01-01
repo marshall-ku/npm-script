@@ -7,6 +7,6 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: marshall-ku/workflows/.github/workflows/setup_pnpm.yml@master
+            - uses: marshall-ku/workflows/.github/actions/setup_pnpm.yml@master
             - name: Run script
               run: pnpm start
