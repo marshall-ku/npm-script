@@ -13,7 +13,7 @@ jobs:
     send:
         uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
         with:
-            status: "succeeded"
+            status: "true"
             message: "Testing"
         secrets:
             url: ${{ secrets.DISCORD_WEBHOOK_URI }}
