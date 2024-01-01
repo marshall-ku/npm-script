@@ -1,3 +1,1 @@
 # npm-script
-
-t
