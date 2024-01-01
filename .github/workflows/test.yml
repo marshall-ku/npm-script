@@ -8,5 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: marshall-ku/workflows/.github/actions/setup_pnpm@master
+              with:
+                runner: ${{ runner.os }}
             - name: Run script
               run: pnpm start
