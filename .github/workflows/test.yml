@@ -13,7 +13,7 @@ jobs:
     send:
         uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
         with:
-            status: ${{ contains(join(needs.*.result, ','), 'failure') }}
-            message: "CI job failed - pull request"
+            status: "succeeded"
+            message: "Testing"
         secrets:
             url: ${{ secrets.DISCORD_WEBHOOK_URI }}
