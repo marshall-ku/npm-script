@@ -14,7 +14,7 @@ jobs:
         uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
         with:
             succeed: true
-            message: "Testing"
+            message: "Testing workflow"
             title: "Hello there"
             color: "3108265"
         secrets:
