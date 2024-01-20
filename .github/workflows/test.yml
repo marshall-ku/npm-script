@@ -13,12 +13,25 @@ jobs:
             - uses: marshall-ku/workflows/setup_pnpm@master
             - name: Run script
               run: pnpm start
-    send:
-        uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
-        with:
-            succeed: true
-            message: "Testing workflow"
-            title: "Hello there"
-            color: "3108265"
-        secrets:
-            url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+    # send:
+    #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
+    #     with:
+    #         succeed: true
+    #         message: "Testing workflow"
+    #         title: "Hello there"
+    #         color: "3108265"
+    #     secrets:
+    #         url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+    check-version:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Check version
+              run: |
+                  PREVIOUS_VERSION=$(git show origin/main:package.json | jq -r .version)
+                  CURRENT_VERSION=$(jq -r .version package.json)
+                  if [ "$PREVIOUS_VERSION" != "$CURRENT_VERSION" ]; then
+                    echo "Version updated to $CURRENT_VERSION"
+                  else
+                    echo "Version has not been updated"
+                  fi
