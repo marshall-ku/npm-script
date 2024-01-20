@@ -26,8 +26,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 2
             - name: Check version
               run: |
                   PREVIOUS_VERSION=$(git show HEAD~1:package.json | jq -r .version)
