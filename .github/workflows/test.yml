@@ -27,7 +27,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
               with:
-                  fetch-depth: 0
+                  fetch-depth: 2
             - name: Check version
               run: |
                   PREVIOUS_VERSION=$(git show origin/master:package.json | jq -r .version)
