@@ -29,5 +29,5 @@ jobs:
               id: check-version
             - run: echo "Version updated to ${VERSION}"
               env:
-                    VERSION=${{steps.check-version.outputs.version}}
+                    VERSION=${{ steps.check-version.outputs.version }}
               if: ${{ steps.check-version.outputs.version != '' }}
