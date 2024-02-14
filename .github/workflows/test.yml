@@ -27,7 +27,7 @@ jobs:
         steps:
             - uses: marshall-ku/workflows/check_version@master
               id: check-version
-            - uses: marshall-ku/workflows/check_version@master
+            - uses: marshall-ku/workflows/create_tag_release@master
               if: ${{ steps.check-version.outputs.version != '' }}
               with:
                 tag: ${{ steps.check-version.outputs.version }}
