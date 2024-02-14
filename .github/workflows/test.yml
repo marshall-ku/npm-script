@@ -27,7 +27,7 @@ jobs:
         steps:
             - uses: marshall-ku/workflows/check_version@master
               id: check-version
-            - run: echo "Version updated to ${VERSION}"
-              env:
-                    VERSION: ${{ steps.check-version.outputs.version }}
+            - uses: marshall-ku/workflows/check_version@master
               if: ${{ steps.check-version.outputs.version != '' }}
+              with:
+                tag: ${{ steps.check-version.outputs.version }}
