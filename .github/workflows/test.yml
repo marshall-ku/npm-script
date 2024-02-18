@@ -50,5 +50,5 @@ jobs:
             - uses: marshall-ku/workflows/greeting@master
               id: greeting
               with:
-                name: "Marshall1"
+                name: "Marshall"
             - run: echo ${{ steps.greeting.outputs.message }}
