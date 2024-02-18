@@ -21,17 +21,13 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
               with:
                   script: |
-                      github.rest.actions.createWorkflowDispatch({
+                      github.repos.createDispatchEvent({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
-                          workflow_id: 'dispatch.yml',
-                          ref: 'master',
-                          event: {
-                              event_type: 'my-event-type',
-                              client_payload: {
-                                passed: false,
-                                message: 'Hi'
-                              }
+                          event_type: 'my-event-type',
+                          client_payload: {
+                            passed: false,
+                            message: 'Hi'
                           }
                       })
 
