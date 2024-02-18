@@ -17,10 +17,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                  gh api repos/marshall-ku/npm-script/dispatches \
+                  gh api /repos/marshall-ku/npm-script/dispatches \
                   -X POST \
-                  -F event_type=my-event-type \
-                  -F client_payload={"passed":false,"message":"Hi there"}
+                  -F event_type=my-event-type
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
