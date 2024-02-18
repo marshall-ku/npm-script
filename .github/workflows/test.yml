@@ -26,7 +26,8 @@ jobs:
                           repo: context.repo.repo,
                           workflow_id: 'dispatch.yml',
                           ref: 'master',
-                          input: {
+                          event_type: 'my-event-type',
+                          client_payload: {
                               passed: false,
                               message: 'Hi'
                           }
