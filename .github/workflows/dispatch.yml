@@ -1,0 +1,14 @@
+name: Reusable Workflow
+
+on:
+    repository_dispatch:
+        types: [my-event-type]
+
+jobs:
+    echo:
+        if: ${{ !github.event.client_payload.passed }}
+        runs-on: ubuntu-latest
+        steps:
+            - env:
+                MESSAGE: ${{ github.event.client_payload.message }}
+              run: echo "$MESSAGE"

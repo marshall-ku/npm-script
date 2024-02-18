@@ -13,6 +13,25 @@ jobs:
             - uses: marshall-ku/workflows/setup_pnpm@master
             - name: Run script
               run: pnpm start
+    trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/github-script@v6
+              env:
+                  GITHUB_TOKEN: ${{ secrets.TOKEN }}
+              with:
+                  script: |
+                      github.rest.actions.createWorkflowDispatch({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          workflow_id: 'dispatch.yml',
+                          ref: 'master',
+                          input: {
+                              passed: false,
+                              message: 'Hi'
+                          }
+                      })
+
     # send:
     #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
     #     with:
@@ -30,4 +49,4 @@ jobs:
             - uses: marshall-ku/workflows/create_tag_release@master
               if: ${{ steps.check-version.outputs.version != '' }}
               with:
-                tag: ${{ steps.check-version.outputs.version }}
+                  tag: ${{ steps.check-version.outputs.version }}
