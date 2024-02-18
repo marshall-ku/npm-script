@@ -17,7 +17,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                  gh api /repos/marshall-ku/workflows/dispatches --field event_type=my-event-type --field client_payload='{"ref": "master"}' --method POST
+                  gh api /repos/marshall-ku/npm-script/dispatches --field event_type=my-event-type --field client_payload='{"ref": "master"}' --method POST
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
