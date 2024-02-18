@@ -44,3 +44,10 @@ jobs:
               if: ${{ steps.check-version.outputs.version != '' }}
               with:
                   tag: ${{ steps.check-version.outputs.version }}
+
+    greeting:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: marshall-ku/workflows/greeting@master
+              id: greeting
+            - run: echo ${{ steps.greeting.outputs.message }}
