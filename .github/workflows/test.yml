@@ -16,20 +16,10 @@ jobs:
     trigger:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/github-script@v6
+            - run: |
+                  gh api /repos/marshall-ku/workflows/dispatches --field event_type=trigger --field client_payload='{"ref": "master"}' --method POST
               env:
-                  GITHUB_TOKEN: ${{ secrets.TOKEN }}
-              with:
-                  script: |
-                      github.repos[context.repo.owner][context.repo.repo].createDispatchEvent({
-                          owner: context.repo.owner,
-                          repo: context.repo.repo,
-                          event_type: 'my-event-type',
-                          client_payload: {
-                            passed: false,
-                            message: 'Hi'
-                          }
-                      })
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # send:
     #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
