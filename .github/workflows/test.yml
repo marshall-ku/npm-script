@@ -21,7 +21,7 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
               with:
                   script: |
-                      github.repos.createDispatchEvent({
+                      github.repos[context.repo.owner][context.repo.repo].createDispatchEvent({
                           owner: context.repo.owner,
                           repo: context.repo.repo,
                           event_type: 'my-event-type',
