@@ -19,7 +19,8 @@ jobs:
             - run: |
                   gh api /repos/marshall-ku/npm-script/dispatches \
                   -X POST \
-                  -d '{"event_type": "my-event-type", "client_payload": {"passed": false, "message": "Hello there"}}'
+                  -F event_type=my-event-type \
+                  -F client_payload={"ref": "master"}
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
