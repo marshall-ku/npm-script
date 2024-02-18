@@ -13,7 +13,6 @@ jobs:
             - uses: marshall-ku/workflows/setup_pnpm@master
             - name: Run script
               run: pnpm start
-            - uses: marshall-ku/workflows/.github/workflows/test.yml@master
     trigger:
         runs-on: ubuntu-latest
         steps:
