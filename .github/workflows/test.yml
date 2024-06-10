@@ -16,7 +16,7 @@ jobs:
                  OUPTUT="${OUPTUT//$'\n'/'%0A'}"
                  OUPTUT="${OUPTUT//$'\r'/'%0D'}"
                  # echo "result=$OUPTUT" >> "$GITHUB_OUTPUT"
-                 echo "::set-output name=result::$MY_STRING"
+                 echo "::set-output name=result::$OUPTUT"
             - name: Create commit comment
               if: ${{ !cancelled() }}
               uses: peter-evans/commit-comment@v3
