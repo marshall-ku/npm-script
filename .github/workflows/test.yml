@@ -8,11 +8,22 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
+            - name: Check test result
+              id: check-test-result
+              run: |
+                 OUPTUT=$(node console.js)
+                 echo "result=$OUTPUT" >> "$GITHUB_OUTPUT"
+            - name: Create commit comment
+              if: ${{ !cancelled() }}
+              uses: peter-evans/commit-comment@v3
               with:
-                  fetch-depth: 0
-            - uses: marshall-ku/workflows/setup_pnpm@master
-            - name: Run script
-              run: pnpm start
+                  body: |
+                      Hi there.
+                      This is your table.
+
+                      ${{ steps.check-test-result.result }}
+
+                      Thanks.
     trigger:
         runs-on: ubuntu-latest
         steps:
