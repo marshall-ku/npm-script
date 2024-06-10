@@ -12,7 +12,7 @@ jobs:
               id: check-test-result
               run: |
                  OUPTUT=$(node console.js)
-                 echo "result=$OUPTUT" >> "$GITHUB_OUTPUT"
+                 echo "RESULT=$OUPTUT" >> "$GITHUB_ENV"
             - name: Create commit comment
               if: ${{ !cancelled() }}
               uses: peter-evans/commit-comment@v3
@@ -21,7 +21,7 @@ jobs:
                       Hi there.
                       This is your table.
 
-                      ${{ steps.check-test-result.outputs.result }}
+                      $RESULT
 
                       Thanks.
     trigger:
