@@ -7,4 +7,4 @@ console.log(`| Component | Story | Success | Viewport | MisMatch Percentage |
 | components-button | string-children | ✅ | phone | 0.00% |
 | components-button | string-children | ✅ | tablet | 0.09% |
 | typography-typography | default | ✅ | phone | 0.00% |
-| typography-typography | default | ✅ | tablet | 0.00% |`)
+| typography-typography | default | ✅ | tablet | 0.00% |`.replace(/\n/g, "%0A").replace(/\r/g, "%0D"))

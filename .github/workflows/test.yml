@@ -12,10 +12,6 @@ jobs:
               id: check-test-result
               run: |
                  OUPTUT=$(node console.js)
-                 OUPTUT="${OUPTUT//'%'/'%25'}"
-                 OUPTUT="${OUPTUT//$'\n'/'%0A'}"
-                 OUPTUT="${OUPTUT//$'\r'/'%0D'}"
-                 # echo "result=$OUPTUT" >> "$GITHUB_OUTPUT"
                  echo "::set-output name=result::$OUPTUT"
             - name: Create commit comment
               if: ${{ !cancelled() }}
