@@ -21,7 +21,7 @@ jobs:
                       Hi there.
                       This is your table.
 
-                      $RESULT
+                      ${{ env.RESULT }}
 
                       Thanks.
     trigger:
