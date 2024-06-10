@@ -9,4 +9,4 @@ console.log([
     "| components-button | string-children | ✅ | tablet | 0.09% |",
     "| typography-typography | default | ✅ | phone | 0.00% |",
     "| typography-typography | default | ✅ | tablet | 0.00% |",
-].join("%0A"))
+].join("\n"))
