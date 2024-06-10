@@ -1,4 +1,4 @@
-console.log(`RESULT<<EOF" >>`)
+console.log("RESULT<<EOF")
 console.log([
     "| Component | Story | Success | Viewport | MisMatch Percentage |",
     "| - | - | - | - | - |",
