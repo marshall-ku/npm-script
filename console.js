@@ -1,3 +1,4 @@
+console.log(`RESULT<<EOF" >>`)
 console.log([
     "| Component | Story | Success | Viewport | MisMatch Percentage |",
     "| - | - | - | - | - |",
@@ -10,3 +11,4 @@ console.log([
     "| typography-typography | default | ✅ | phone | 0.00% |",
     "| typography-typography | default | ✅ | tablet | 0.00% |",
 ].join("\n"))
+console.log("EOF")

@@ -12,7 +12,7 @@ jobs:
               id: check-test-result
               run: |
                  OUPTUT=$(node console.js)
-                 echo "RESULT=$OUPTUT" >> "$GITHUB_ENV"
+                 echo "$OUPTUT" >> "$GITHUB_ENV"
             - name: Create commit comment
               if: ${{ !cancelled() }}
               uses: peter-evans/commit-comment@v3
