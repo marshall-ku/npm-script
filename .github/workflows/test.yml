@@ -24,6 +24,20 @@ jobs:
                       ${{ env.RESULT }}
 
                       Thanks.
+    create-pr:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: echo $(date) > temp.txt
+            - run: bash .github/scripts/commit.sh
+              env:
+                FILES: temp.txt
+                MESSAGE: 'Update visual regression test results'
+            - uses: peter-evans/create-pull-request@v6
+              with:
+                title: '[Example] Update report'
+                branch: visual-regression-${{ github.ref }}
+                delete-branch: true
     trigger:
         runs-on: ubuntu-latest
         steps:
