@@ -39,6 +39,10 @@ jobs:
                 title: '[Example] Update report'
                 branch: visual-regression-${{ github.head_ref }}
                 delete-branch: true
+                labels: |
+                    automated
+                reviewers: |
+                    marshall-ku
     trigger:
         runs-on: ubuntu-latest
         steps:
