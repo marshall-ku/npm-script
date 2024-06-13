@@ -42,7 +42,7 @@ jobs:
                 labels: |
                     automated
                 reviewers: |
-                    marshall-ku
+                    ${{ vars.REVIEWERS }}
     trigger:
         runs-on: ubuntu-latest
         steps:
