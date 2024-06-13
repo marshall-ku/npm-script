@@ -37,7 +37,7 @@ jobs:
             - uses: peter-evans/create-pull-request@v6
               with:
                 title: '[Example] Update report'
-                branch: visual-regression-${{ github.head_ref }}
+                branch: visual-regression-${{ github.ref }}
                 delete-branch: true
                 labels: |
                     automated
