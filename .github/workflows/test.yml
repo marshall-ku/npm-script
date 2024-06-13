@@ -33,6 +33,7 @@ jobs:
               env:
                 FILES: temp.txt
                 MESSAGE: 'Update visual regression test results'
+                PREVENT_PUSH: true
             - uses: peter-evans/create-pull-request@v6
               with:
                 title: '[Example] Update report'
