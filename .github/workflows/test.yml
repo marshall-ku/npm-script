@@ -11,8 +11,8 @@ jobs:
             - name: Check test result
               id: check-test-result
               run: |
-                 OUPTUT=$(node console.js)
-                 echo "$OUPTUT" >> "$GITHUB_ENV"
+                  OUPTUT=$(node console.js)
+                  echo "$OUPTUT" >> "$GITHUB_ENV"
             - name: Create commit comment
               if: ${{ !cancelled() }}
               uses: peter-evans/commit-comment@v3
@@ -31,18 +31,18 @@ jobs:
             - run: echo $(date) > temp.txt
             - run: bash .github/scripts/commit.sh
               env:
-                FILES: temp.txt
-                MESSAGE: 'Update visual regression test results'
-                PREVENT_PUSH: true
+                  FILES: temp.txt
+                  MESSAGE: "Update visual regression test results"
+                  PREVENT_PUSH: true
             - uses: peter-evans/create-pull-request@v6
               with:
-                title: '[Example] Update report'
-                branch: visual-regression-${{ github.ref_name }}
-                delete-branch: true
-                labels: |
-                    automated
-                reviewers: |
-                    ${{ vars.REVIEWERS }}
+                  title: "[Example] Update report"
+                  branch: visual-regression-${{ github.ref_name }}
+                  delete-branch: true
+                  labels: |
+                      automated
+                  reviewers: |
+                      ${{ vars.REVIEWERS }}
     trigger:
         runs-on: ubuntu-latest
         steps:
@@ -55,15 +55,29 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    send:
-        uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
-        with:
-            succeed: true
-            message: "Testing workflow"
-            title: "Hello there!"
-            color: "3108265"
-        # secrets:
-        #     url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+    send_with_gh:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                  gh api /repos/marshall-ku/workflows/dispatches \
+                    --method POST \
+                    --field event_type=send \
+                    --field client_payload[succeed]=true \
+                    --field client_payload[message]="Testing workflow" \
+                    --field client_payload[title]="Hello there!" \
+                    --field client_payload[color]="3108265"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # send:
+    #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
+    #     with:
+    #         succeed: true
+    #         message: "Testing workflow"
+    #         title: "Hello there!"
+    #         color: "3108265"
+    # secrets:
+    #     url: ${{ secrets.DISCORD_WEBHOOK_URI }}
 
     check-version:
         runs-on: ubuntu-latest
@@ -81,5 +95,5 @@ jobs:
             - uses: marshall-ku/workflows/greeting@master
               id: greeting
               with:
-                name: "Marshall"
+                  name: "Marshall"
             - run: echo ${{ steps.greeting.outputs.message }}
