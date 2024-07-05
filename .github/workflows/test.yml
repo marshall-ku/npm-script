@@ -55,15 +55,16 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    # send:
-    #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
-    #     with:
-    #         succeed: true
-    #         message: "Testing workflow"
-    #         title: "Hello there"
-    #         color: "3108265"
-    #     secrets:
-    #         url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+    send:
+        uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
+        with:
+            succeed: true
+            message: "Testing workflow"
+            title: "Hello there"
+            color: "3108265"
+        # secrets:
+        #     url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+
     check-version:
         runs-on: ubuntu-latest
         steps:
