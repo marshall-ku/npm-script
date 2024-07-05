@@ -49,6 +49,7 @@ jobs:
             - run: |
                   gh api /repos/marshall-ku/npm-script/dispatches \
                   --method POST \
+                  --header "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
                   --field event_type=my-event-type \
                   --field client_payload[passed]=false \
                   --field client_payload[message]="Testing workflow"
