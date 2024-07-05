@@ -58,20 +58,6 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
-    send_with_gh:
-        runs-on: ubuntu-latest
-        steps:
-            - run: |
-                  gh api /repos/marshall-ku/workflows/dispatches \
-                    --method POST \
-                    --field event_type=send \
-                    --field client_payload[succeed]=true \
-                    --field client_payload[message]="Testing workflow" \
-                    --field client_payload[title]="Hello there!" \
-                    --field client_payload[color]="3108265"
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     # send:
     #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
     #     with:
