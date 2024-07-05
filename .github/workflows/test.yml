@@ -53,7 +53,7 @@ jobs:
                   --field client_payload[passed]=false \
                   --field client_payload[message]="Testing workflow"
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
     send_with_gh:
         runs-on: ubuntu-latest
