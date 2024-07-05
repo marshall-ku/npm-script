@@ -47,12 +47,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
-                  gh api /repos/marshall-ku/npm-script/dispatches \
-                  --method POST \
-                  --header "Authorization: Bearer ${{ secrets.TOKEN }}" \
-                  --field event_type=my-event-type \
-                  --field client_payload[passed]=false \
-                  --field client_payload[message]="Testing workflow"
+                  gh api \
+                    --method POST \
+                    -H "Accept: application/vnd.github+json" \
+                    -H "X-GitHub-Api-Version: 2022-11-28" \
+                    /repos/marshall-ku/npm-script/dispatches \
+                      --field event_type=my-event-type \
+                      --field client_payload[passed]=false \
+                      --field client_payload[message]="Testing workflow"
               env:
                   GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
