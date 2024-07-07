@@ -1,2 +1,3 @@
 # npm-script
 
+Hello, world!
