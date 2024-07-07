@@ -43,30 +43,26 @@ jobs:
                       automated
                   reviewers: |
                       ${{ vars.REVIEWERS }}
-    trigger:
-        runs-on: ubuntu-latest
-        steps:
-            - run: |
-                  gh api \
-                    --method POST \
-                    -H "Accept: application/vnd.github+json" \
-                    -H "X-GitHub-Api-Version: 2022-11-28" \
-                    /repos/marshall-ku/npm-script/dispatches \
-                      --field event_type=my-event-type \
-                      --field client_payload[passed]=false \
-                      --field client_payload[message]="Testing workflow"
-              env:
-                  GITHUB_TOKEN: ${{ secrets.TOKEN }}
+    # trigger:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #         - run: |
+    #               gh api \
+    #                 --method POST \
+    #                 -H "Accept: application/vnd.github+json" \
+    #                 -H "X-GitHub-Api-Version: 2022-11-28" \
+    #                 /repos/marshall-ku/npm-script/dispatches \
+    #                   --field event_type=my-event-type \
+    #                   --field client_payload[passed]=false \
+    #                   --field client_payload[message]="Testing workflow"
+    #           env:
+    #               GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
-    # send:
-    #     uses: marshall-ku/workflows/.github/workflows/send_notification.yml@master
-    #     with:
-    #         succeed: true
-    #         message: "Testing workflow"
-    #         title: "Hello there!"
-    #         color: "3108265"
-    # secrets:
-    #     url: ${{ secrets.DISCORD_WEBHOOK_URI }}
+    send:
+        uses: marshall-ku/workflows/.github/workflows/call.yaml@master
+        with:
+            repository: ${{ github.repository }}
+            title: "Hi"
 
     check-version:
         runs-on: ubuntu-latest
