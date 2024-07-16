@@ -62,7 +62,7 @@ jobs:
         uses: marshall-ku/workflows/.github/workflows/call.yaml@master
         with:
             repository: ${{ github.repository }}
-            title: "Hi"
+            title: "Hi there"
         secrets: inherit
 
     check-version:
