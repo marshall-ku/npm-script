@@ -63,7 +63,6 @@ jobs:
         with:
             repository: ${{ github.repository }}
             title: "Hi there"
-        secrets: inherit
 
     check-version:
         runs-on: ubuntu-latest
