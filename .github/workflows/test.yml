@@ -81,4 +81,6 @@ jobs:
               id: greeting
               with:
                   name: "Marshall"
-            - run: echo ${{ steps.greeting.outputs.version }}
+            - run: |
+                  echo "${{ steps.greeting.outputs.message }}"
+                  echo "${{ steps.greeting.outputs.version }}"
