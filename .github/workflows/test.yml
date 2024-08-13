@@ -82,5 +82,5 @@ jobs:
               with:
                   name: "Marshall"
             - run: |
-                  echo "${{ steps.greeting.outputs.message }}"
-                  echo "${{ steps.greeting.outputs.version }}"
+                  echo "MESSAGE: ${{ steps.greeting.outputs.message }}"
+                  echo "VERSION: ${{ steps.greeting.outputs.version }}"
