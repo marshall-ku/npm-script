@@ -58,12 +58,6 @@ jobs:
     #           env:
     #               GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
-    send:
-        uses: marshall-ku/workflows/.github/workflows/call.yaml@master
-        with:
-            repository: ${{ github.repository }}
-            title: "Hi there"
-
     check-version:
         runs-on: ubuntu-latest
         steps:
